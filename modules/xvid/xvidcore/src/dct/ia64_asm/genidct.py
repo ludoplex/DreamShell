@@ -35,7 +35,7 @@ def alloc_regs(matrix, n):
     """
     
     regs = [ ]
-    for i in range(0, n):
+    for _ in range(0, n):
         m = regbase
         while m in matrix or m in regs:
             m = m + 1
@@ -100,9 +100,7 @@ def transpose(matrix):
 
 # register renaming for 8 regs containing a column
 def shuffle_column(matrix, col, permutation):
-    l = [ ]
-    for i in range(0,8):
-        l.append(matrix[i*4+col])
+    l = [matrix[i*4+col] for i in range(0,8)]
     for i in range(0,8):
         matrix[i*4+col] = l[permutation[i]]
 
